@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\V1\Period;
 
 use App\Models\Period;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Config;
@@ -29,40 +28,44 @@ class PeriodController extends Controller
      */
     public function store(PeriodStoreRequest $request): JsonResponse
     {
-        Period::create([
+        $period = Period::create([
             'grade' => $request->post('grade'),
         ]);
 
         return response()->json([
             "message" => "New period added successfully!",
+            "data" => $period,
         ]);
     }
 
     /**
      * Display the specified resource.
-     *
      * @param  int  $id
      * @return JsonResponse
      */
     public function show(int $id): JsonResponse
     {
-        $result = Period::first($id);
+        $result = Period::with('student', 'teacher')->findOrFail($id);
         return response()->json($result);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
+     * @param PeriodStoreRequest $request
+     * @param int $id
      * @return JsonResponse
      */
-    public function update(Request $request, int $id): JsonResponse
+    public function update(PeriodStoreRequest $request, int $id): JsonResponse
     {
-        $result = Period::where('id', $id)->update([
+        Period::where('id', $id)->update([
             'grade' => $request->input('grade'),
         ]);
-        return response()->json($result);
+
+        return response()->json([
+            "message" => "The period updated successfully",
+            "grade" => $request->input('grade'),
+        ]);
     }
 
     /**
@@ -74,7 +77,8 @@ class PeriodController extends Controller
     {
         Period::where('id', $id)->delete();
         return response()->json([
-            'message' => "The period successfully deleted!",
+            "message" => "The period successfully deleted!",
+            "id" => $id,
         ]);
     }
 }

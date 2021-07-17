@@ -10,6 +10,11 @@ class Teacher extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'period',
+    ];
+
     public function period(): BelongsToMany
     {
         return $this->belongsToMany(Period::class);

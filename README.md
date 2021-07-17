@@ -6,7 +6,7 @@ To init the project you need to run the following commands:
 - `composer install`
 - `php artisan jwt:secret`
 - `php artisan migrate`
-- `php artisan db:seed`
+- Create `.env` file from `.env.example`
 
 ### Routes
 

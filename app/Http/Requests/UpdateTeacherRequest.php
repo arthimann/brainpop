@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PeriodStoreRequest extends FormRequest
+class UpdateTeacherRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
@@ -21,12 +21,20 @@ class PeriodStoreRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'grade' => [
+            'fullname' => [
                 'required',
-                'digits_between:1,12',
+                'max:50',
+                'regex:/^[\pL\s\-]+$/u',
+            ],
+
+            'email' => [
+                'email',
+                'required',
+                'max:100',
+                'unique:users,email'
             ],
         ];
     }

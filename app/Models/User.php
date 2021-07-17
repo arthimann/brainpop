@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -20,7 +21,6 @@ class User extends Authenticatable implements JWTSubject
         'fullname',
         'email',
         'password',
-//        'type',
     ];
 
     /**
@@ -64,12 +64,20 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function teacher()
+    /**
+     * Relation to the teacher
+     * @return HasOne
+     * */
+    public function teacher(): HasOne
     {
         return $this->hasOne(Teacher::class);
     }
 
-    public function student()
+    /**
+     * Relation to the student
+     * @return HasOne
+     * */
+    public function student(): HasOne
     {
         return $this->hasOne(Student::class);
     }

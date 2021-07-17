@@ -3,10 +3,11 @@
 ### INIT The Project
 To init the project you need to run the following commands:
 
+- Create `.env` file from `.env.example`
+- Create DB. Default name: `brainpop`
 - `composer install`
 - `php artisan jwt:secret`
 - `php artisan migrate`
-- Create `.env` file from `.env.example`
 
 ### Routes
 

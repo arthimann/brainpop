@@ -1,0 +1,879 @@
+{
+	"info": {
+		"_postman_id": "29424e4a-16c2-4111-a7f7-36a00c171f6b",
+		"name": "BrainPOP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login & Register",
+			"item": [
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "User Token",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bphost}}/v1/auth/signin",
+									"host": [
+										"{{bphost}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login User Data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUyMTU0MSwiZXhwIjoxNjI2NTI1MTQxLCJuYmYiOjE2MjY1MjE1NDEsImp0aSI6InhyZGJvaVg4ZkFkOFBUNWIiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.pBsO_6518y1FCAuj5E_efU2lWwWkUTKcQ3BDdKcNB2c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{bphost}}/v1/auth/me",
+									"host": [
+										"{{bphost}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUxMjMwMCwiZXhwIjoxNjI2NTE1OTAwLCJuYmYiOjE2MjY1MTIzMDAsImp0aSI6ImRzMktBOGNzaUs4dnd4UzYiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ov2baYlf0tE9laq-MQMaxX-cCdTeobrWj8wznZui8Rk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{bphost}}/v1/auth/signout",
+									"host": [
+										"{{bphost}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"signout"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"item": [
+						{
+							"name": "Student or Teacher",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "fullname",
+											"value": "John Doe",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "repassword",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "student",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bphost}}/v1/auth/register",
+									"host": [
+										"{{bphost}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Period",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzMTA2MiwiZXhwIjoxNjI2NTM0NjYyLCJuYmYiOjE2MjY1MzEwNjIsImp0aSI6InJacEU0c1JUWmYwS1dLcEsiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FVO1FXgRdaQ-EVFjhhWbn7cq3tFMmO989R0tGUXsoGE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{bphost}}/v1/period",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"period"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Period",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzMTA2MiwiZXhwIjoxNjI2NTM0NjYyLCJuYmYiOjE2MjY1MzEwNjIsImp0aSI6InJacEU0c1JUWmYwS1dLcEsiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FVO1FXgRdaQ-EVFjhhWbn7cq3tFMmO989R0tGUXsoGE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grade",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{bphost}}/v1/period",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"period"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Specific Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzNzkwOCwiZXhwIjoxNjI2NTQxNTA4LCJuYmYiOjE2MjY1Mzc5MDgsImp0aSI6InpaSU9GVzNVdzVFcFdFNU0iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.jgohVNqFrg8M8Vqp44wVnK_vsbYIdECVS1VhObYjodo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{bphost}}/v1/period/1",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"period",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Period",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzMTA2MiwiZXhwIjoxNjI2NTM0NjYyLCJuYmYiOjE2MjY1MzEwNjIsImp0aSI6InJacEU0c1JUWmYwS1dLcEsiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FVO1FXgRdaQ-EVFjhhWbn7cq3tFMmO989R0tGUXsoGE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grade",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{bphost}}/v1/period/2",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"period",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Period",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzMTA2MiwiZXhwIjoxNjI2NTM0NjYyLCJuYmYiOjE2MjY1MzEwNjIsImp0aSI6InJacEU0c1JUWmYwS1dLcEsiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FVO1FXgRdaQ-EVFjhhWbn7cq3tFMmO989R0tGUXsoGE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{bphost}}/v1/period/3",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"period",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign User to Period",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzMTA2MiwiZXhwIjoxNjI2NTM0NjYyLCJuYmYiOjE2MjY1MzEwNjIsImp0aSI6InJacEU0c1JUWmYwS1dLcEsiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FVO1FXgRdaQ-EVFjhhWbn7cq3tFMmO989R0tGUXsoGE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "teacher",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{bphost}}/v1/assign",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"assign"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Re-assign User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzNDI4NSwiZXhwIjoxNjI2NTM3ODg1LCJuYmYiOjE2MjY1MzQyODUsImp0aSI6ImxBNzBnU0dBdjJNNDQxbkMiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.QHd9q_z0YBkUNMGlgJXvQ8kIYH0eLggpSR17odIxQOs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "teacher",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "period",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{bphost}}/v1/assign/1",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"assign",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUyMTU0MSwiZXhwIjoxNjI2NTI1MTQxLCJuYmYiOjE2MjY1MjE1NDEsImp0aSI6InhyZGJvaVg4ZkFkOFBUNWIiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.pBsO_6518y1FCAuj5E_efU2lWwWkUTKcQ3BDdKcNB2c",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Teacher",
+			"item": [
+				{
+					"name": "Show Teacher",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzNzkwOCwiZXhwIjoxNjI2NTQxNTA4LCJuYmYiOjE2MjY1Mzc5MDgsImp0aSI6InpaSU9GVzNVdzVFcFdFNU0iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.jgohVNqFrg8M8Vqp44wVnK_vsbYIdECVS1VhObYjodo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{bphost}}/v1/teacher/1",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"teacher",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teacher Periods",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjU0MTUyMCwiZXhwIjoxNjI2NTQ1MTIwLCJuYmYiOjE2MjY1NDE1MjAsImp0aSI6IlRwNWlYUXZIOWl2RUMwbUUiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KP4qSsB5MBvQeKxxSVdW3ysRacLky8kqWRKKczjZp94",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{bphost}}/v1/teacher/periods/1",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"teacher",
+								"periods",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove teacher from period",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzNzkwOCwiZXhwIjoxNjI2NTQxNTA4LCJuYmYiOjE2MjY1Mzc5MDgsImp0aSI6InpaSU9GVzNVdzVFcFdFNU0iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.jgohVNqFrg8M8Vqp44wVnK_vsbYIdECVS1VhObYjodo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "period",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{bphost}}/v1/teacher/2",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"teacher",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzNzkwOCwiZXhwIjoxNjI2NTQxNTA4LCJuYmYiOjE2MjY1Mzc5MDgsImp0aSI6InpaSU9GVzNVdzVFcFdFNU0iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.jgohVNqFrg8M8Vqp44wVnK_vsbYIdECVS1VhObYjodo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fullname",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test@test.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{bphost}}/v1/teacher/2",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"teacher",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "Show Student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzNzkwOCwiZXhwIjoxNjI2NTQxNTA4LCJuYmYiOjE2MjY1Mzc5MDgsImp0aSI6InpaSU9GVzNVdzVFcFdFNU0iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.jgohVNqFrg8M8Vqp44wVnK_vsbYIdECVS1VhObYjodo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{bphost}}/v1/student/1",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"student",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove student from period",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzNzkwOCwiZXhwIjoxNjI2NTQxNTA4LCJuYmYiOjE2MjY1Mzc5MDgsImp0aSI6InpaSU9GVzNVdzVFcFdFNU0iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.jgohVNqFrg8M8Vqp44wVnK_vsbYIdECVS1VhObYjodo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "period",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{bphost}}/v1/student/2",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"student",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUzNzkwOCwiZXhwIjoxNjI2NTQxNTA4LCJuYmYiOjE2MjY1Mzc5MDgsImp0aSI6InpaSU9GVzNVdzVFcFdFNU0iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.jgohVNqFrg8M8Vqp44wVnK_vsbYIdECVS1VhObYjodo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fullname",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test@test.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{bphost}}/v1/student/2",
+							"host": [
+								"{{bphost}}"
+							],
+							"path": [
+								"v1",
+								"student",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9icmFpbnBvcC5sb2NcL2FwaVwvdjFcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTYyNjUxMjAzOCwiZXhwIjoxNjI2NTE1NjM4LCJuYmYiOjE2MjY1MTIwMzgsImp0aSI6IjlCVTdrRHdjZXk0MzZSSnIiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.Ec4CwtX2wvIx2oDb7I-VD7EeuAhOASQ2eORxHpeQ4Es",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
